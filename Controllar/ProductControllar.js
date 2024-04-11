@@ -1,19 +1,39 @@
 const Product = require("../Model/ProductModel")
 const fs = require("fs")
-
+const cloudinary = require('cloudinary').v2 
+cloudinary.config({ 
+  cloud_name: 'dglihfwse', 
+  api_key: '939345957566958', 
+  api_secret: 'q-Pg0dyWquxjatuRb62-PtFzkM0' 
+});
+const uploadCloundanary = async(file)=>{
+    console.log(file)
+    try {
+        const uploadFile = await cloudinary.uploader.upload(file)
+        return uploadFile.secure_url
+    } catch (error) {
+        console.log(error)
+    }
+}
 exports.createRecord = async (req, res) => {
     try {
         console.log("I am Hit")
         //   console.log(req.files)
         let data = new Product(req.body)
-        if (req.files.pic1)
-            data.pic1 = req.files.pic1[0].path
-        if (req.files.pic2)
-            data.pic2 = req.files.pic2[0].path
-        if (req.files.pic3)
-            data.pic3 = req.files.pic3[0].path
-        if (req.files.pic4)
-            data.pic4 = req.files.pic4[0].path
+        if (req.files.pic1){
+
+            const url = await uploadCloundanary(req.files.pic1[0].path)
+        console.log("urls",url)
+        data.pic1 = url
+        }
+        if (req.files.pic2){
+
+            data.pic2 = await uploadCloundanary(req.files.pic2[0].path)
+        }
+        // if (req.files.pic3)
+        //     data.pic3 = await uploadCloundanary(req.files.pic3[0].path)
+        // if (req.files.pic4)
+        //     data.pic4 = await uploadCloundanary(req.files.pic4[0].path)
         await data.save()
         res.send({ status: 200, result: "Done", message: "New Record id Created", data: data })
 

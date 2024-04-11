@@ -26,19 +26,19 @@ const ProductSchema = new mongoose.Schema({
     },
    pic1: {
         type: String,
-        required: [true, "Product Pic is must Required"]
+        // required: [true, "Product Pic is must Required"]
     },
    pic2: {
         type: String,
-        required: [true, "Product Pic is must Required"]
+        // required: [true, "Product Pic is must Required"]
     },
    pic3: {
         type: String,
-        required: [true, "Product Pic is must Required"]
+        // required: [true, "Product Pic is must Required"]
     },
    pic4: {
         type: String,
-        required: [true, "Product Pic is must Required"]
+        // required: [true, "Product Pic is must Required"]
     },
     active: {
         type: Boolean,
