@@ -14,12 +14,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage })
 
-
 ProductRouter.post('/', upload.fields([
     { name: "pic1", maxCount: 1 },
-    { name: "pic2", maxCount: 1 },
-    { name: "pic3", maxCount: 1 },
-    { name: "pic4", maxCount: 1 }
+    { name: "pic2", maxCount: 1 }
+    
 ]), createRecord)
 
 ProductRouter.get("/", getRecord)
@@ -29,9 +27,9 @@ ProductRouter.delete("/:_id", deleteRecord)
 
 ProductRouter.put("/:_id", upload.fields([
     { name: "pic1", maxCount: 1 },
-    { name: "pic2", maxCount: 1 },
-    { name: "pic3", maxCount: 1 },
-    { name: "pic4", maxCount: 1 }
+    { name: "pic2", maxCount: 1 }
+    // { name: "pic3", maxCount: 1 },
+    // { name: "pic4", maxCount: 1 }
 ]), updateRecord)
 
 module.exports = ProductRouter
