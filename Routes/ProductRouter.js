@@ -1,5 +1,6 @@
 const { createRecord, getRecord, deleteRecord, getRecordSingle, updateRecord } = require("../Controllar/ProductControllar")
 const multer = require("multer")
+const { verifyAdmin } = require("../verification")
 
 const ProductRouter = require("express").Router()
 
@@ -15,7 +16,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 
-ProductRouter.post('/', upload.fields([
+ProductRouter.post('/',verifyAdmin,  upload.fields([
     { name: "pic1", maxCount: 1 },
     { name: "pic2", maxCount: 1 },
     { name: "pic3", maxCount: 1 },
@@ -25,9 +26,9 @@ ProductRouter.post('/', upload.fields([
 ProductRouter.get("/", getRecord)
 ProductRouter.get("/:_id", getRecordSingle)
 
-ProductRouter.delete("/:_id", deleteRecord)
+ProductRouter.delete("/:_id", verifyAdmin, deleteRecord)
 
-ProductRouter.put("/:_id", upload.fields([
+ProductRouter.put("/:_id",  upload.fields([
     { name: "pic1", maxCount: 1 },
     { name: "pic2", maxCount: 1 },
     { name: "pic3", maxCount: 1 },

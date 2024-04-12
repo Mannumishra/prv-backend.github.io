@@ -2,6 +2,8 @@ const User = require("../Model/UserModel")
 var passwordValidator = require('password-validator');
 const bcrypt = require("bcrypt")
 const sendEmail = require('../utils/sendMail');
+const jwt = require("jsonwebtoken");
+
 
 // Create a schema
 var schema = new passwordValidator();
@@ -42,7 +44,7 @@ exports.newRegister = async (req, res) => {
                     });
 
                 } catch (error) {
-
+                    console.log(error);
                 }
             }
         })
@@ -65,20 +67,25 @@ exports.login = async (req, res) => {
             ]
         })
         console.log(data);
-        if (data) {
-            // console.log(data);
-            await bcrypt.compare(req.body.password, data.password)
-            res.status(200).json({
-                success: true,
-                mes: "login Success fully",
-                data: data
-            })
+            if (data && await bcrypt.compare(req.body.password, data.password)) {
+                let key = data.role == "Admin" ? process.env.JWT_SALT_KEY_ADMIN : process.env.JWT_SALT_KEY_BUYER
+                jwt.sign({ data }, key, { expiresIn: 1296000 }, (error, token) => {
+                    if (error)
+                        res.send({ status: 500, result: "Fail", message: "Internal Server Error" })
+                    else {
+                        res.status(200).json({
+                            result: "Done",
+                            data: data,
+                            token: token
+                        })
+                    }
+                })
+            }
+            else
+                res.send({ status: 401, result: "Fail", message: "Invalid Username or Password" })
         }
-        else {
-            console.log(error);
-        }
-    } catch (error) {
-
+     catch (error) {
+        console.log(error);
     }
 }
 

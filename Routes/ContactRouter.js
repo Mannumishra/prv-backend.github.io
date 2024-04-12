@@ -1,8 +1,9 @@
 const { createRecord } = require("../Controllar/ContactControllar")
+const { verifyBuyer } = require("../verification")
 
 const ContactRouter = require("express").Router()
 
 
-ContactRouter.post("/" ,createRecord)
+ContactRouter.post("/", verifyBuyer, createRecord)
 
 module.exports = ContactRouter
