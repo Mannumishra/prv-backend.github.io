@@ -1,5 +1,6 @@
 const Product = require("../Model/ProductModel")
 const fs = require("fs")
+const cloudinary = require('cloudinary').v2
 
 exports.createRecord = async (req, res) => {
     try {
