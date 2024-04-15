@@ -28,7 +28,7 @@ ProductRouter.get("/:_id", getRecordSingle)
 
 ProductRouter.delete("/:_id", verifyAdmin, deleteRecord)
 
-ProductRouter.put("/:_id",  upload.fields([
+ProductRouter.put("/:_id",verifyAdmin,  upload.fields([
     { name: "pic1", maxCount: 1 },
     { name: "pic2", maxCount: 1 },
     { name: "pic3", maxCount: 1 },

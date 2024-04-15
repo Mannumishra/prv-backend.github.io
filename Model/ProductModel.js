@@ -9,7 +9,7 @@ const ProductSchema = new mongoose.Schema({
         type: String,
         required: [true, "Product Brand is Must Required"]
     },
-    maincategory: {
+    category: {
         type: String,
         required: [true, "Product Color is Must Required"]
     },
@@ -26,12 +26,10 @@ const ProductSchema = new mongoose.Schema({
     },
    pic1: {
         type: String
-        // ,
         // required: [true, "Product Pic is must Required"]
     },
    pic2: {
         type: String
-        // ,
         // required: [true, "Product Pic is must Required"]
     },
    pic3: {
@@ -41,7 +39,6 @@ const ProductSchema = new mongoose.Schema({
     },
    pic4: {
         type: String
-        // ,
         // required: [true, "Product Pic is must Required"]
     },
     active: {
