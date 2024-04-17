@@ -1,17 +1,24 @@
 const { createRecord, getRecord, deleteRecord, getRecordSingle, updateRecord } = require("../Controllar/ProductControllar")
 const multer = require("multer")
 const { verifyAdmin } = require("../verification")
-
+const fs = require('fs');
 const ProductRouter = require("express").Router()
 
-const storage = multer.memoryStorage({
+const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'Public/Product')
+        const destinationPath = 'Public/Product';
+        // Check if the directory exists, create it if it doesn't
+        fs.mkdir(destinationPath, { recursive: true }, function(err) {
+            if (err) {
+                console.error('Error creating directory:', err);
+            }
+            cb(null, destinationPath); // Continue with the destination path
+        });
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + file.originalname)
+        cb(null, Date.now() + file.originalname); // File naming convention
     }
-})
+});
 
 const upload = multer({ storage: storage })
 
