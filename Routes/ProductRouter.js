@@ -4,7 +4,7 @@ const { verifyAdmin } = require("../verification")
 
 const ProductRouter = require("express").Router()
 
-const storage = multer.diskStorage({
+const storage = multer.memoryStorage({
     destination: function (req, file, cb) {
         cb(null, 'Public/Product')
     },
