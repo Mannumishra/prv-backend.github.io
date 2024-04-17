@@ -26,7 +26,7 @@ const updateRecord = async (req, res) => {
                 error: 'Category not found'
             });
         }
-        data.name = req.body.name ?? data.name;
+        data.maincategory = req.body.maincategory ?? data.maincategory;
         await data.save();
         res.status(200).json({
             success: true,
