@@ -5,7 +5,7 @@ const productmini = new mongoose.Schema({
         type: String,
         required: [true, "Product Name is Must required"]
     },
-    size: {
+    sizename: {
         type: String,
         required: [true, "Product id is must Required"]
     },
@@ -21,7 +21,7 @@ const productmini = new mongoose.Schema({
         type: String
 
     },
-    category: {
+    maincategory: {
         type: String,
         required: [true, "Product Color is Must Required"]
     },

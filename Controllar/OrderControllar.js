@@ -4,8 +4,8 @@ const User = require("../Model/UserModel")
 exports.createRecord = async (req, res) => {
     try {
         const { userid, cartItems } = req.body
-        console.log("i am hit");
-        console.log(req.body)
+        console.log("i am hittttt");
+        // console.log(req.body,"order")
         if (!userid || !cartItems) {
             return res.status(400).json({
                 success: false,

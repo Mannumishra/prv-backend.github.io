@@ -1,7 +1,7 @@
 const express = require("express")
 const Router = require("./Routes/MainRouter")
 const cors = require("cors")
-// require("./mongo/db")
+// require("./getConnectDb")
 const connectdb = require('./mongo/db')
 require("dotenv").config()
 const PORT = 8000
