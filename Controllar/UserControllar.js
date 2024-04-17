@@ -31,7 +31,6 @@ exports.newRegister = async (req, res) => {
             else {
                 data.password = hash
                 try {
-                    console.log(data);
                     await data.save()
                     res.status(200).json({
                         success: true,
@@ -59,14 +58,13 @@ exports.newRegister = async (req, res) => {
 
 exports.login = async (req, res) => {
     try {
-        console.log(req.body.userName);
+        // console.log(req.body.userName);
         let data = await User.findOne({
             $or: [
                 { userName: req.body.userName },
                 { email: req.body.userName }
             ]
         })
-        console.log(data);
             if (data && await bcrypt.compare(req.body.password, data.password)) {
                 let key = data.role == "Admin" ? process.env.JWT_SALT_KEY_ADMIN : process.env.JWT_SALT_KEY_BUYER
                 jwt.sign({ data }, key, { expiresIn: 1296000 }, (error, token) => {
@@ -89,7 +87,17 @@ exports.login = async (req, res) => {
     }
 }
 
-
+exports.getByUserId = async (req,res)=>{
+    try {
+        let userDetails =await User.findOne({_id:req.params._id})
+        res.status(200).json({
+            success:true,
+            data:userDetails
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 // const User = require('../Model/UserModel');
 // const sendEmail = require('../utils/sendMail');

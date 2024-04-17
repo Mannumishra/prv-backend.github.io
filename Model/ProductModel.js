@@ -9,35 +9,43 @@ const ProductSchema = new mongoose.Schema({
         type: String,
         required: [true, "Product Brand is Must Required"]
     },
-    category: {
+    maincategory: {
         type: String,
         required: [true, "Product Color is Must Required"]
+    },
+    subcategory: {
+        type: String,
+        required: [true, "Product Subcategory Must Required"]
     },
     color: {
         type: String,
         required: [true, "Product Color is Must Required"]
     },
-    size: {
-        type: Number
+    sizename: {
+        type: String,
+        required: [true, "Product Color is Must Required"]
     },
     stock: {
         type: Number,
         required: [true, "Stock is must Required"]
     },
-   pic1: {
+    description: {
+        type: String
+    },
+    pic1: {
         type: String
         // required: [true, "Product Pic is must Required"]
     },
-   pic2: {
+    pic2: {
         type: String
         // required: [true, "Product Pic is must Required"]
     },
-   pic3: {
+    pic3: {
         type: String
         // ,
         // required: [true, "Product Pic is must Required"]
     },
-   pic4: {
+    pic4: {
         type: String
         // required: [true, "Product Pic is must Required"]
     },

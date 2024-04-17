@@ -28,6 +28,7 @@ const UserSchema = new mongoose.Schema({
         type:String,
         default:"Buyer"
     }
+    
 })
 
 const User = mongoose.model("User", UserSchema)

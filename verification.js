@@ -19,6 +19,7 @@ function verifyAdmin(req, res, next) {
 }
 function verifyBuyer(req, res, next) {
     const token = req.headers.authorization
+    console.log(token)
     if (token) {
         jwt.verify(token, process.env.JWT_SALT_KEY_BUYER, (error) => {
             if (error) {
