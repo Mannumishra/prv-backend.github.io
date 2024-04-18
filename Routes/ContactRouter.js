@@ -1,5 +1,5 @@
 const { createRecord } = require("../Controllar/ContactControllar")
-const { verifyBuyer } = require("../verification")
+// const { verifyBuyer } = require("../verification")
 
 const ContactRouter = require("express").Router()
 
