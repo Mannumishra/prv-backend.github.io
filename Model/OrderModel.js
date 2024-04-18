@@ -38,7 +38,7 @@ const orderSchema = new mongoose.Schema({
     product: [productmini],
     OrderDate: {
         type: Date,
-        default: Date.now
+        default: Date.now()
     }
 });
 
