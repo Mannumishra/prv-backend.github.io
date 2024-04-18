@@ -29,18 +29,17 @@ const productmini = new mongoose.Schema({
         type: String,
         required: [true, "Product Subcategory Must Required"]
     }
-},{timestamps:true})
+}, { timestamps: true })
 const orderSchema = new mongoose.Schema({
     userid: {
 
         type: String,
         required: [true, "User Id is must required"]
     },
-  
-    product: [productmini],
-    createdAt:Date.now()
 
-},{timestamps:true})
+    product: [productmini],
+
+}, { timestamps: true })
 
 const Order = mongoose.model("Order", orderSchema)
 
