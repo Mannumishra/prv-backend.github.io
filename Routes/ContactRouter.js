@@ -4,6 +4,6 @@ const { verifyBuyer } = require("../verification")
 const ContactRouter = require("express").Router()
 
 
-ContactRouter.post("/", verifyBuyer, createRecord)
+ContactRouter.post("/", createRecord)
 
 module.exports = ContactRouter
