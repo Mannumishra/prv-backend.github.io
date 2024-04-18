@@ -21,3 +21,31 @@ exports.createRecord = async (req, res) => {
         console.log(error);
     }
 }
+
+
+ exports.getRecord = async(req,res)=>{
+    try {
+        let data = await Contact.find()
+        res.status(200).json({
+            success:true,
+            data:data
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+exports.deleteRecord = async(req,res)=>{
+    try {
+        let data = await Contact.findOne({_id:req.params._id})
+        await data.deleteOne()
+        res.status(200).json({
+            success:true,
+          mess:"Record Deleted"
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+

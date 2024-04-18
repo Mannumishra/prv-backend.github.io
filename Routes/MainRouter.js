@@ -13,8 +13,8 @@ Router.use("/product", ProductRouter)
 Router.use("/user", UserRouter)
 Router.use("/contact", ContactRouter)
 Router.use("/order", OrderRouter)
-Router.use("/category" , CategoryRouter)
-Router.use("/subcategory" , SubcategoryRouter)
-Router.use("/size" , sizeRouter)
+Router.use("/category", CategoryRouter)
+Router.use("/subcategory", SubcategoryRouter)
+Router.use("/size", sizeRouter)
 
 module.exports = Router
