@@ -36,13 +36,10 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: [true, "User Id is must required"]
     },
-    date:{
-        type:String,
-        default:Date.now()
-    },
+  
     product: [productmini]
 
-})
+},{timestamps:true})
 
 const Order = mongoose.model("Order", orderSchema)
 
