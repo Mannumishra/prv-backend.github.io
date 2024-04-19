@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const productmini = new mongoose.Schema({
+    productId: {
+        type: String,
+        required: [true, "Product id is Must required"]
+    },
     name: {
         type: String,
         required: [true, "Product Name is Must required"]
@@ -16,7 +20,7 @@ const productmini = new mongoose.Schema({
     color: {
         type: String,
         required: [true, "Product Category is must Required"]
-    }, 
+    },
     image: {
         type: String
     },
