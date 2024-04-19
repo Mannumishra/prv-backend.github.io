@@ -44,7 +44,10 @@ exports.deleteRecord = async(req,res)=>{
           mess:"Record Deleted"
         })
     } catch (error) {
-        console.log(error);
+        res.status(500).json({
+            success:true,
+          mess:"Unauthorized Actavity"
+        })
     }
 }
 
